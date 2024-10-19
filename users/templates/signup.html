@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .signup-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2em;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 90%;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 1.5em;
+            color: #333;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 1.2em;
+            position: relative;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 10px;
+            top: 14px;
+            color: #999;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 10px;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            background-color: transparent;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-bottom-color: #23a6d5;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label,
+        .form-group select:focus + label,
+        .form-group select:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 0.8em;
+            color: #23a6d5;
+        }
+
+        button {
+            background-color: #23a6d5;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1em;
+        }
+
+        button:hover {
+            background-color: #1c8ab9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="signup-container">
+    <h2>Join Us</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" id="first_name" name="first_name" placeholder=" " required>
+            <label for="first_name">First Name</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="last_name" name="last_name" placeholder=" " required>
+            <label for="last_name">Last Name</label>
+        </div>
+
+        <div class="form-group">
+            <input type="date" id="dob" name="dob" required>
+            <label for="dob">Date of Birth</label>
+        </div>
+
+        <div class="form-group">
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <label for="gender">Gender</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="address" name="address" placeholder=" " required>
+            <label for="address">Address</label>
+        </div>
+
+        <div class="form-group">
+            <input type="number" id="city_id" name="city_id" placeholder=" " required>
+            <label for="city_id">City ID</label>
+        </div>
+
+        <div class="form-group">
+            <input type="email" id="email" name="email" placeholder=" " required>
+            <label for="email">Email</label>
+        </div>
+
+        <div class="form-group">
+            <input type="date" id="start_date" name="start_date" required>
+            <label for="start_date">Start Date</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="job_title" name="job_title" placeholder=" " required>
+            <label for="job_title">Job Title</label>
+        </div>
+
+        <div class="form-group">
+            <input type="password" id="password" name="password" placeholder=" " required>
+            <label for="password">Password</label>
+        </div>
+
+        <button type="submit">Create Account</button>
+    </form>
+</div>
+
+</body>
+</html>
