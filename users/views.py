@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import UserProfile
 from .forms import SignUpForm
@@ -49,3 +50,8 @@ def delete_user(request, user_id):
     user = get_object_or_404(UserProfile, pk=user_id)
     user.delete()
     return redirect('home')
+
+@staff_member_required
+def admin_view(request):
+    users = UserProfile.objects.all()
+    return render(request, 'admin.html', {'users': users})
