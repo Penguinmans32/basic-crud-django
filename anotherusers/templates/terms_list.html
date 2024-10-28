@@ -1,0 +1,10 @@
+<h2>Employment Terms</h2>
+<a href="{% url 'terms_create' %}">Add New Employment Term</a>
+<ul>
+    {% for term in terms %}
+        <li>{{ term.employee_id }}: {{ term.agreed_salary }}
+            {{ term.salary_start_date }} - {{ term.salary_end_date }} |
+        <a href="{% url 'terms_update' term.id %}">Edit</a> |
+        <a href="{% url 'terms_delete' term.id %}">Delete</a></li>
+    {% endfor %}
+</ul>
